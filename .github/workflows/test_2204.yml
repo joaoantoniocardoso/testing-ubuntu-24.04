@@ -1,0 +1,23 @@
+name: Test-22.04
+
+on: [push, pull_request]
+
+jobs:
+  test-webrtc-thread-leak:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install apt dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y --no-install-recommends \
+          ca-certificates \
+          gnupg
+    
+    - name: Run test
+      run: |
+        echo "::group::Info"
+        echo $(uname -a)
+        echo "::endgroup::"
